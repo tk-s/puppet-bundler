@@ -3,8 +3,10 @@ class bundler (
   $ensure   = 'present'
 ) {
 
-  package { "bundler":
-    ensure   => $ensure,
-    provider => $provider,
+  if !defined(Package["bundler"]) {
+    package { "bundler":
+      ensure   => $ensure,
+      provider => $provider,
+    }
   }
 }
